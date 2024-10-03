@@ -5,13 +5,13 @@ use Firebase\JWT\Key;
 
 class TokenManager
 {
-    private $secretKey = "clave_secreta"; // Cambia esta clave secreta en producción
+    private $secretKey = "supersecretpass";
 
     // Generar el JWT
     public function generateToken($email)
     {
         $issuedAt = time();
-        $expirationTime = $issuedAt + 3600;  // El token expira en 1 hora
+        $expirationTime = $issuedAt + 3600;  // Expires in 1 hour
 
         $payload = array(
             'iat' => $issuedAt,
@@ -22,7 +22,6 @@ class TokenManager
         return JWT::encode($payload, $this->secretKey, 'HS256');
     }
 
-    // Verificar el JWT
     public function validateToken($token)
     {
         try {

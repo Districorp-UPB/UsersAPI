@@ -25,7 +25,6 @@ class AuthAPI
     }
 }
 
-// Crear el servidor SOAP
 $options = array('uri' => "http://localhost/soap-server.php");
 $server = new SoapServer(NULL, $options);
 $server->setClass("AuthAPI");

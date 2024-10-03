@@ -26,7 +26,7 @@ class LDAPConnection
 
     public function addUser($username, $password, $email, $phone, $role)
     {
-        // Aquí iría la lógica para registrar un nuevo usuario en LDAP
+        // Work in progress
         return false;
     }
 
