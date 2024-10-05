@@ -19,7 +19,7 @@ class AuthAPI
 }
 
 // Creación del servidor
-$options = array('uri' => "http://localhost:8000/soap-server.php");
+$options = array('uri' => "https://localhost:443/soap-server.php");
 $server = new SoapServer(NULL, $options);
 $server->setClass("AuthAPI");
 $server->handle();
