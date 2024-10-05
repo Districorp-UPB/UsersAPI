@@ -1,31 +1,26 @@
 <?php
 
 require_once 'login.php';
-require_once 'register.php';
 
 class AuthAPI
 {
     private $login;
-    private $register;
 
     public function __construct()
     {
         $this->login = new Login();
-        $this->register = new Register();
     }
 
-    public function login($email, $password)
+    // Método para login
+    public function login($email, $password, $ou)
     {
-        return $this->login->authenticate($email, $password);
-    }
-
-    public function createUser($username, $password, $email, $phone, $role)
-    {
-        return $this->register->createUser($username, $password, $email, $phone, $role);
+        return $this->login->authenticate($email, $password, $ou);
     }
 }
 
-$options = array('uri' => "http://localhost/soap-server.php");
+// Creación del servidor
+$options = array('uri' => "http://localhost:8000/soap-server.php");
 $server = new SoapServer(NULL, $options);
 $server->setClass("AuthAPI");
 $server->handle();
+?>

@@ -1,17 +1,18 @@
 <?php
+require 'vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 class TokenManager
 {
-    private $secretKey = "supersecretpass";
+    private $secretKey = "scpssldap2024";  
 
-    // Generar el JWT
+    // Generación de JWT
     public function generateToken($email)
     {
         $issuedAt = time();
-        $expirationTime = $issuedAt + 3600;  // Expires in 1 hour
+        $expirationTime = $issuedAt + 3600;  // Expira en 1 hora
 
         $payload = array(
             'iat' => $issuedAt,
@@ -32,3 +33,4 @@ class TokenManager
         }
     }
 }
+?>

@@ -14,11 +14,12 @@ class Login
         $this->tokenManager = new TokenManager();
     }
 
-    public function authenticate($email, $password)
+    // Se recibe correo, contraseña y tipo usuario
+    public function authenticate($email, $password, $ou)
     {
         $this->ldap->connect();
 
-        if ($this->ldap->authenticate($email, $password)) {
+        if ($this->ldap->authenticate($email, $password, $ou)) {
             $token = $this->tokenManager->generateToken($email);
             return ["status" => "success", "token" => $token];
         } else {
@@ -26,3 +27,4 @@ class Login
         }
     }
 }
+?>
