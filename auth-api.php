@@ -36,7 +36,7 @@ $options = array(
 );
 
 // Ruta al archivo WSDL
-$wsdl = "https://localhost:443/wsdl/auth.wsdl";
+$wsdl = __DIR__ . "/wsdl/auth.wsdl";
 
 // Creación del servidor
 $server = new SoapServer($wsdl, $options);
