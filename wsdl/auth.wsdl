@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="https://localhost/auth-api.php"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://localhost/auth-api.php">
+
+    <!-- Tipo de datos complejo que contiene los parámetros del login -->
+    <types>
+        <xsd:schema targetNamespace="https://localhost/auth-api.php">
+            <xsd:element name="loginRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="password" type="xsd:string"/>
+                        <xsd:element name="ou" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="loginResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="token" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <!-- El mensaje de solicitud (request) y respuesta (response) -->
+    <message name="loginRequest">
+        <part name="parameters" element="tns:loginRequest"/>
+    </message>
+    <message name="loginResponse">
+        <part name="parameters" element="tns:loginResponse"/>
+    </message>
+
+    <!-- La operación de login -->
+    <portType name="AuthAPIPortType">
+        <operation name="login">
+            <input message="tns:loginRequest"/>
+            <output message="tns:loginResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Información de cómo se transportará el mensaje -->
+    <binding name="AuthAPIBinding" type="tns:AuthAPIPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="login">
+            <soap:operation soapAction="https://localhost/auth-api.php#auth"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Definición del servicio -->
+    <service name="AuthAPIService">
+        <port name="AuthAPIPort" binding="tns:AuthAPIBinding">
+            <soap:address location="https://localhost/auth-api.php"/>
+        </port>
+    </service>
+
+</definitions>

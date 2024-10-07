@@ -11,16 +11,34 @@ class AuthAPI
         $this->login = new Login();
     }
 
-    // Método para login
-    public function login($email, $password, $ou)
+    public function login($loginRequest)
     {
+        $email = $loginRequest->email;
+        $password = $loginRequest->password;
+        $ou = $loginRequest->ou;
+
         return $this->login->authenticate($email, $password, $ou);
     }
 }
 
+// Opciones del servidor con WSDL
+$options = array(
+    // 'uri' => "https://localhost:443/soap-server.php",
+    'soap_version' => SOAP_1_2,
+    'cache_wsdl' => WSDL_CACHE_NONE,
+    'stream_context' => stream_context_create([
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        ]
+    ])
+);
+
+// Ruta al archivo WSDL
+$wsdl = "https://localhost:443/wsdl/auth.wsdl";
+
 // Creación del servidor
-$options = array('uri' => "https://localhost:443/soap-server.php");
-$server = new SoapServer(NULL, $options);
+$server = new SoapServer($wsdl, $options);
 $server->setClass("AuthAPI");
 $server->handle();
-?>
