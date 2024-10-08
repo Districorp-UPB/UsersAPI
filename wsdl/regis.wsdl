@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="https://207.248.81.69/regis-api.php"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://207.248.81.69/regis-api.php">
+
+    <types>
+        <xsd:schema targetNamespace="https://207.248.81.69/regis-api.php">
+            <xsd:element name="registerRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="name" type="xsd:string"/>
+                        <xsd:element name="surname" type="xsd:string"/>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="phone" type="xsd:string"/>
+                        <xsd:element name="password" type="xsd:string"/>
+                        <xsd:element name="role" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            
+            <xsd:element name="registerResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" type="xsd:string"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="registerRequest">
+        <part name="parameters" element="tns:registerRequest"/>
+    </message>
+    
+    <message name="registerResponse">
+        <part name="parameters" element="tns:registerResponse"/>
+    </message>
+
+    <portType name="RegisAPIPortType">
+        <operation name="register">
+            <input message="tns:registerRequest"/>
+            <output message="tns:registerResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="RegisAPIBinding" type="tns:RegisAPIPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="register">
+            <soap:operation soapAction="https://207.248.81.69/regis-api.php#regis"/>
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+
+    <service name="RegisAPIService">
+        <port name="RegisAPIPort" binding="tns:RegisAPIBinding">
+            <soap:address location="https://207.248.81.69/regis-api.php"/>
+        </port>
+    </service>
+</definitions>

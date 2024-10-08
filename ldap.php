@@ -8,7 +8,7 @@ class LDAPConnection
 
     public function connect()
     {
-        ldap_set_option(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, LDAP_OPT_X_TLS_NEVER);  // Fuck
+        // ldap_set_option(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, LDAP_OPT_X_TLS_NEVER);  // Fuck
         $this->ldapConn = ldap_connect($this->ldapHost);
 
         if (!$this->ldapConn) {
@@ -16,6 +16,13 @@ class LDAPConnection
         }
 
         ldap_set_option($this->ldapConn, LDAP_OPT_PROTOCOL_VERSION, 3);
+
+        $admin_dn = "cn=admin,dc=districorp,dc=com";
+        $admin_password = "cpda2024*/";
+
+        if (!@ldap_bind($this->ldapConn, $admin_dn, $admin_password)) {
+            throw new Exception("Error en la autenticación: " . ldap_error($this->ldapConn));
+        }
     }
 
     public function authenticate($email, $password, $ou)
@@ -35,4 +42,3 @@ class LDAPConnection
         return $this->ldapConn;
     }
 }
-?>
