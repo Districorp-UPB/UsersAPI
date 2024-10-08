@@ -10,7 +10,7 @@ class Register
         $this->ldap = new LDAPConnection();
     }
 
-    public function addUser($name, $surname, $email, $phone, $password, $role)
+    public function addUser($name, $surname, $email, $phone, $document, $password, $role)
     {
         $this->ldap->connect();
 
@@ -25,6 +25,7 @@ class Register
             "sn" => $surname,
             "mail" => $email,
             "telephoneNumber" => $phone,
+            "employeeNumber" => $document, 
             "objectClass" => ["inetOrgPerson", "posixAccount", "top"],
             "userPassword" => $password,
             "uidNumber" => 10000,

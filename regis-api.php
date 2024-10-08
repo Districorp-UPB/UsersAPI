@@ -17,10 +17,11 @@ class RegisAPI
         $surname = $registerRequest->surname;
         $email = $registerRequest->email;
         $phone = $registerRequest->phone;
+        $document = $registerRequest->document;
         $password = $registerRequest->password;
         $role = $registerRequest->role;
 
-        return $this->register->addUser($name, $surname, $email, $phone, $password, $role);
+        return $this->register->addUser($name, $surname, $email, $phone, $document, $password, $role);
     }
 }
 

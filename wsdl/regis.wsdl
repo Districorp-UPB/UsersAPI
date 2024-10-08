@@ -14,6 +14,7 @@
                         <xsd:element name="surname" type="xsd:string"/>
                         <xsd:element name="email" type="xsd:string"/>
                         <xsd:element name="phone" type="xsd:string"/>
+                        <xsd:element name="document" type="xsd:string"/>
                         <xsd:element name="password" type="xsd:string"/>
                         <xsd:element name="role" type="xsd:string"/>
                     </xsd:sequence>
