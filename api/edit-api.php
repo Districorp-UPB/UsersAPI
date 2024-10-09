@@ -1,5 +1,5 @@
 <?php
-require_once 'edit.php';
+require_once '../services/edit.php';
 
 class EditAPI
 {
@@ -42,7 +42,7 @@ $options = array(
 );
 
 // Ruta al archivo WSDL
-$wsdl = __DIR__ . "/wsdl/edit.wsdl";
+$wsdl = __DIR__ . "/../wsdl/edit.wsdl";
 
 // Creación del servidor
 $server = new SoapServer($wsdl, $options);

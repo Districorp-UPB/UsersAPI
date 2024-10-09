@@ -1,6 +1,6 @@
 <?php
 
-require_once 'login.php';
+require_once '../services/login.php';
 
 class AuthAPI
 {
@@ -36,7 +36,7 @@ $options = array(
 );
 
 // Ruta al archivo WSDL
-$wsdl = __DIR__ . "/wsdl/auth.wsdl";
+$wsdl = __DIR__ . "/../wsdl/auth.wsdl";
 
 // Creación del servidor
 $server = new SoapServer($wsdl, $options);

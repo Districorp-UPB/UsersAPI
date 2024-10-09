@@ -1,6 +1,6 @@
 <?php
 
-require_once 'register.php';
+require_once '../services/register.php';
 
 class RegisAPI
 {
@@ -40,7 +40,7 @@ $options = array(
 );
 
 // Ruta al archivo WSDL
-$wsdl = __DIR__ . "/wsdl/regis.wsdl";
+$wsdl = __DIR__ . "/../wsdl/regis.wsdl";
 
 // Creación del servidor
 $server = new SoapServer($wsdl, $options);
