@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UserService"
+             targetNamespace="https://207.248.81.69/api/users-api.php"
+             xmlns:tns="https://207.248.81.69/api/users-api.php"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xsd:schema targetNamespace="https://207.248.81.69/api/users-api.php">
+            <xsd:element name="getUsersByGroupRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ou" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getUsersByGroupResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" type="xsd:string"/>
+                        <xsd:element name="data" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="user" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="uid" type="xsd:string"/>
+                                                <xsd:element name="name" type="xsd:string"/>
+                                                <xsd:element name="surname" type="xsd:string"/>
+                                                <xsd:element name="email" type="xsd:string"/>
+                                                <xsd:element name="role" type="xsd:string"/>
+                                                <xsd:element name="phone" type="xsd:string"/>
+                                                <xsd:element name="document" type="xsd:string"/>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="getUsersByGroupRequest">
+        <part name="parameters" element="tns:getUsersByGroupRequest"/>
+    </message>
+    <message name="getUsersByGroupResponse">
+        <part name="parameters" element="tns:getUsersByGroupResponse"/>
+    </message>
+
+    <portType name="UserPortType">
+        <operation name="getUsersByGroup">
+            <input message="tns:getUsersByGroupRequest"/>
+            <output message="tns:getUsersByGroupResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="UserBinding" type="tns:UserPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getUsersByGroup">
+            <soap:operation soapAction="getUsersByGroup"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="UserService">
+        <port name="UserPort" binding="tns:UserBinding">
+            <soap:address location="https://207.248.81.69/api/users-api.php"/>
+        </port>
+    </service>
+</definitions>
