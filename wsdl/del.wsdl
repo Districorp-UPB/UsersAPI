@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-    xmlns:tns="https://207.248.81.69/api/del-api.php"
+    xmlns:tns="https://sistema1.bucaramanga.upb.edu.co/api/del-api.php"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="https://207.248.81.69/api/del-api.php">
+    targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/del-api.php">
 
     <types>
-        <xsd:schema targetNamespace="https://207.248.81.69/api/del-api.php">
+        <xsd:schema targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/del-api.php">
             <xsd:element name="deleteRequest">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -44,7 +44,7 @@
     <binding name="DeleteAPIBinding" type="tns:DeleteAPIPortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="delete">
-            <soap:operation soapAction="https://207.248.81.69/api/del-api.php#delete"/>
+            <soap:operation soapAction="https://sistema1.bucaramanga.upb.edu.co/api/del-api.php#delete"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -56,7 +56,7 @@
 
     <service name="DeleteAPIService">
         <port name="DeleteAPIPort" binding="tns:DeleteAPIBinding">
-            <soap:address location="https://207.248.81.69/api/del-api.php"/>
+            <soap:address location="https://sistema1.bucaramanga.upb.edu.co/api/del-api.php"/>
         </port>
     </service>
 

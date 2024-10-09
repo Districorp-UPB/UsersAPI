@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="UserService"
-             targetNamespace="https://207.248.81.69/api/users-api.php"
-             xmlns:tns="https://207.248.81.69/api/users-api.php"
+             targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/users-api.php"
+             xmlns:tns="https://sistema1.bucaramanga.upb.edu.co/api/users-api.php"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns="http://schemas.xmlsoap.org/wsdl/">
 
     <types>
-        <xsd:schema targetNamespace="https://207.248.81.69/api/users-api.php">
+        <xsd:schema targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/users-api.php">
             <xsd:element name="getUsersByGroupRequest">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -73,7 +73,7 @@
 
     <service name="UserService">
         <port name="UserPort" binding="tns:UserBinding">
-            <soap:address location="https://207.248.81.69/api/users-api.php"/>
+            <soap:address location="https://sistema1.bucaramanga.upb.edu.co/api/users-api.php"/>
         </port>
     </service>
 </definitions>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-    xmlns:tns="https://207.248.81.69/api/auth-api.php"
+    xmlns:tns="https://sistema1.bucaramanga.upb.edu.co/api/auth-api.php"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="https://207.248.81.69/api/auth-api.php">
+    targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/auth-api.php">
 
     <types>
-        <xsd:schema targetNamespace="https://207.248.81.69/api/auth-api.php">
+        <xsd:schema targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/auth-api.php">
             <xsd:element name="loginRequest">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -44,7 +44,7 @@
     <binding name="AuthAPIBinding" type="tns:AuthAPIPortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="login">
-            <soap:operation soapAction="https://207.248.81.69/api/auth-api.php#auth"/>
+            <soap:operation soapAction="https://sistema1.bucaramanga.upb.edu.co/api/auth-api.php#auth"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -56,7 +56,7 @@
 
     <service name="AuthAPIService">
         <port name="AuthAPIPort" binding="tns:AuthAPIBinding">
-            <soap:address location="https://207.248.81.69/api/auth-api.php"/>
+            <soap:address location="https://sistema1.bucaramanga.upb.edu.co/api/auth-api.php"/>
         </port>
     </service>
 

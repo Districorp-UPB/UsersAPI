@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-    xmlns:tns="https://207.248.81.69/api/regis-api.php"
+    xmlns:tns="https://sistema1.bucaramanga.upb.edu.co/api/regis-api.php"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="https://207.248.81.69/api/regis-api.php">
+    targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/regis-api.php">
 
     <types>
-        <xsd:schema targetNamespace="https://207.248.81.69/api/regis-api.php">
+        <xsd:schema targetNamespace="https://sistema1.bucaramanga.upb.edu.co/api/regis-api.php">
             <xsd:element name="registerRequest">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -50,7 +50,7 @@
     <binding name="RegisAPIBinding" type="tns:RegisAPIPortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="register">
-            <soap:operation soapAction="https://207.248.81.69/api/regis-api.php#regis"/>
+            <soap:operation soapAction="https://sistema1.bucaramanga.upb.edu.co/api/regis-api.php#regis"/>
             <input>
                 <soap:body use="literal" />
             </input>
@@ -62,7 +62,7 @@
 
     <service name="RegisAPIService">
         <port name="RegisAPIPort" binding="tns:RegisAPIBinding">
-            <soap:address location="https://207.248.81.69/api/regis-api.php"/>
+            <soap:address location="https://sistema1.bucaramanga.upb.edu.co/api/regis-api.php"/>
         </port>
     </service>
 </definitions>
