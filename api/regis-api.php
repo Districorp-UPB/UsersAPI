@@ -19,9 +19,9 @@ class RegisAPI
         $phone = $registerRequest->phone;
         $document = $registerRequest->document;
         $password = $registerRequest->password;
-        $role = $registerRequest->role;
+        $ou = $registerRequest->ou;
 
-        return $this->register->addUser($name, $surname, $email, $phone, $document, $password, $role);
+        return $this->register->addUser($name, $surname, $email, $phone, $document, $password, $ou);
     }
 }
 

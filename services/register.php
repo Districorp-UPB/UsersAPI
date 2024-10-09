@@ -10,14 +10,14 @@ class Register
         $this->ldap = new LDAPConnection();
     }
 
-    public function addUser($name, $surname, $email, $phone, $document, $password, $role)
+    public function addUser($name, $surname, $email, $phone, $document, $password, $ou)
     {
         $this->ldap->connect();
 
         // Separar el uid del correo
         $uid = strstr($email, '@', true);
 
-        $dn = "uid=$uid,ou=$role,dc=districorp,dc=com";
+        $dn = "uid=$uid,ou=$ou,dc=districorp,dc=com";
 
         $entry = [
             "uid" => $uid,
