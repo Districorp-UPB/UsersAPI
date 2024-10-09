@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="https://207.248.81.69/edit-api.php"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://207.248.81.69/edit-api.php">
+
+    <types>
+        <xsd:schema targetNamespace="https://207.248.81.69/edit-api.php">
+            <xsd:element name="editRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="ou" type="xsd:string"/>
+                        <xsd:element name="name" type="xsd:string"/>
+                        <xsd:element name="surname" type="xsd:string"/>
+                        <xsd:element name="phone" type="xsd:string"/>
+                        <xsd:element name="document" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="editResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" type="xsd:string"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="editRequestMessage">
+        <part name="editRequest" element="tns:editRequest"/>
+    </message>
+
+    <message name="editResponseMessage">
+        <part name="editResponse" element="tns:editResponse"/>
+    </message>
+
+    <portType name="EditAPI">
+        <operation name="edit">
+            <input message="tns:editRequestMessage"/>
+            <output message="tns:editResponseMessage"/>
+        </operation>
+    </portType>
+
+    <binding name="EditAPIBinding" type="tns:EditAPI">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="edit">
+            <soap:operation soapAction="https://207.248.81.69/edit-api.php#edit"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="EditAPIService">
+        <port name="EditAPIPort" binding="tns:EditAPIBinding">
+            <soap:address location="https://207.248.81.69/edit-api.php"/>
+        </port>
+    </service>
+</definitions>
