@@ -9,7 +9,7 @@ class TokenManager
     private $secretKey = "scpssldap2024";  
 
     // Generación de JWT
-    public function generateToken($email)
+    public function generateToken($email, $ou)
     {
         $issuedAt = time();
         $expirationTime = $issuedAt + 86400;  // Expira en 1 dia
@@ -17,7 +17,8 @@ class TokenManager
         $payload = array(
             'iat' => $issuedAt,
             'exp' => $expirationTime,
-            'email' => $email
+            'email' => $email,
+            'ou' => $ou
         );
 
         return JWT::encode($payload, $this->secretKey, 'HS256');

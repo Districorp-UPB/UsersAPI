@@ -20,7 +20,7 @@ class Login
         $this->ldap->connect();
 
         if ($this->ldap->authenticate($email, $password, $ou)) {
-            $token = $this->tokenManager->generateToken($email);
+            $token = $this->tokenManager->generateToken($email, $ou);
             return ["status" => "success", "token" => $token];
         } else {
             return ["status" => "error", "message" => "Credenciales incorrectas."];
