@@ -12,7 +12,7 @@ class TokenManager
     public function generateToken($email)
     {
         $issuedAt = time();
-        $expirationTime = $issuedAt + 3600;  // Expira en 1 hora
+        $expirationTime = $issuedAt + 86400;  // Expira en 1 dia
 
         $payload = array(
             'iat' => $issuedAt,
