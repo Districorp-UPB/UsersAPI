@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="https://207.248.81.69/api/delete-api.php"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://207.248.81.69/api/delete-api.php">
+
+    <types>
+        <xsd:schema targetNamespace="https://207.248.81.69/api/delete-api.php">
+            <xsd:element name="deleteRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="ou" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="deleteResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" type="xsd:string"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="deleteRequest">
+        <part name="parameters" element="tns:deleteRequest"/>
+    </message>
+    <message name="deleteResponse">
+        <part name="parameters" element="tns:deleteResponse"/>
+    </message>
+
+    <portType name="DeleteAPIPortType">
+        <operation name="delete">
+            <input message="tns:deleteRequest"/>
+            <output message="tns:deleteResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="DeleteAPIBinding" type="tns:DeleteAPIPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="delete">
+            <soap:operation soapAction="https://207.248.81.69/api/delete-api.php#delete"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="DeleteAPIService">
+        <port name="DeleteAPIPort" binding="tns:DeleteAPIBinding">
+            <soap:address location="https://207.248.81.69/api/delete-api.php"/>
+        </port>
+    </service>
+
+</definitions>
